@@ -1,8 +1,10 @@
-from django.shortcuts import render
 import re
+from django.shortcuts import render
+
 
 def index(request):
-    return render(request, 'regex_app/index.html')
+    return render(request, "regex_app/index.html")
+
 
 def confirm(request):
     if request.method == "POST":
@@ -13,15 +15,31 @@ def confirm(request):
 
         name = name.replace(" ", "")
 
-        if not re.match(r"^\d+$", age):
-            return render(request, "regex_app/confirm.html")
+        if re.match("^\d{1,3}$", age):
+            print("マッチしました！")
+        else:
+            print("マッチしませんでした！")
+            return render(request, "regex_app/index.html", {"age":""})
 
-        if not re.match(r"^\d{3}-?\d{4}$", zip_code):
-            return render(request, "regex_app/confirm.html")
+        if re.match("^\d{7}(-\d{7})?$", zip_code):
+            print("マッチしました！")
+        else:
+            print("マッチしませんでした！")
+            return render(request, "regex_app/index.html", {"zip_code": ""})
 
-        if not re.match(r"^\d{3}-?\d{4}-?\d{4}$", cell_phone):
-             return render(request, "regex_app/confirm.html")
+        if re.match("^\d{11}(-\d{11})?$", cell_phone):
+            print("マッチしました！")
+        else:
+            print("マッチしませんでした！")
+            return render(request, "regex_app/index.html", {"cell_phone": ""})
 
+        form_data = {
+            "name": name,
+            "age": age,
+            "zip_code": zip_code,
+            "cell_phone": cell_phone,
+        }
+
+        return render(request, "regex_app/confirm.html", {"form_data": form_data})
 
     return render(request, "regex_app/confirm.html")
-

@@ -18,32 +18,32 @@
         </p>
         <p style="color: red;">
             {% if age == "" %}
-            Ageは1~3桁の半角数字のみで入力してください。
+                Ageは1~3桁の半角数字のみで入力してください。
             {% endif %}
         </p>
         <p>
             <label for="age">Age:
-                <input type="text" name="age" id="age" value="{{age}}">
+                <input type="text" name="age" id="age" value="{{ age }}">
             </label>
         </p>
         <p style="color: red;">
             {% if zip_code == "" %}
-            Zip codeは全7桁の半角数字を入力してください。(ハイフンはあってもなくてもOK)
+                Zip codeは全7桁の半角数字を入力してください。(ハイフンはあってもなくてもOK)
             {% endif %}
         </p>
         <p>
             <label for="zip_code">Zip code:
-                <input type="text" name="zip_code" id="zip_code" value="{{zip_code}}">
+                <input type="text" name="zip_code" id="zip_code" value="{{ zip_code }}">
             </label>
         </p>
         <p style="color: red;">
             {% if cell_phone == "" %}
-            Cell phoneは全9桁の半角数字を入力してください。(ハイフンはあってもなくてもOK)
+                Cell phoneは全11桁の半角数字を入力してください。(ハイフンはあってもなくてもOK)
             {% endif %}
         </p>
         <p>
             <label for="cell_phone">Cell phone:
-                <input type="text" name="cell_phone" id="cell_phone" value="{{cell_phone}}">
+                <input type="text" name="cell_phone" id="cell_phone" value="{{ cell_phone }}">
             </label>
         </p>
         <input type="submit">
